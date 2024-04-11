@@ -5,5 +5,4 @@ class ChatMessage(
     val sender: String,
     val channelId: String,
     val data: Any
-) {
-}
+)

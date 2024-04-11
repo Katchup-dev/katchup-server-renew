@@ -5,7 +5,6 @@ import org.springframework.messaging.simp.SimpMessageSendingOperations
 import org.springframework.stereotype.Controller
 import site.katchup.springboot.dto.ChatMessage
 
-
 @Controller
 class WebSocketTestController(
     private val simpMessageSendingOperations: SimpMessageSendingOperations

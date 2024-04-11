@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class KatchupserverApplication
 
 fun main(args: Array<String>) {
-	runApplication<KatchupserverApplication>(*args)
+    runApplication<KatchupserverApplication>(*args)
 }
