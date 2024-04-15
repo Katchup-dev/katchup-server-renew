@@ -4,8 +4,8 @@ import org.springframework.http.HttpStatus
 import site.katchup.springboot.global.message.FailMessage
 
 open class UnauthorizedException(
-    message: FailMessage,
+    failMessage: FailMessage,
 ) : KatchupException(
     HttpStatus.UNAUTHORIZED,
-    message.value,
+    failMessage,
 )
