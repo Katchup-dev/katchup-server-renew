@@ -7,7 +7,7 @@ import site.katchup.springboot.dto.ChatMessage
 
 @Controller
 class WebSocketTestController(
-    private val simpMessageSendingOperations: SimpMessageSendingOperations
+    private val simpMessageSendingOperations: SimpMessageSendingOperations,
 ) {
     @MessageMapping("/chat")
     fun handle(message: ChatMessage) {
