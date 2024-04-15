@@ -12,6 +12,7 @@ class BaseResponse<T>(
     val data: T?,
 ) {
     constructor(message: String) : this(message, null)
+
     companion object {
         fun <T> ok(message: SuccessMessage, data: T): ResponseEntity<BaseResponse<T>> {
             return ResponseEntity.ok(BaseResponse(message.value, data))
@@ -21,8 +22,13 @@ class BaseResponse<T>(
             return ResponseEntity.status(HttpStatus.CREATED).body(BaseResponse(message.value, data))
         }
 
-        fun <T> fail(message: FailMessage): BaseResponse<T> {
-            return BaseResponse(message.value, null)
+        fun fail(status: HttpStatus, message: FailMessage): ResponseEntity<BaseResponse<Unit>> {
+            return ResponseEntity.status(status).body(BaseResponse(message.value))
+        }
+
+        fun fail(exception: Exception): ResponseEntity<BaseResponse<Unit>> {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(BaseResponse(exception.message ?: "Internal Server Error"))
         }
     }
 }

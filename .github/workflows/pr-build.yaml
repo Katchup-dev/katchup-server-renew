@@ -1,7 +1,7 @@
 name: Katchup PR build
 
 on:
-  push:
+  pull_request:
     branches: [ "main" ]
 
 permissions:
