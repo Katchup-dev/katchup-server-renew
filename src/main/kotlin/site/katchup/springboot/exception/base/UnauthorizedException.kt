@@ -2,7 +2,7 @@ package site.katchup.springboot.exception.base
 
 import org.springframework.http.HttpStatus
 
-class UnauthorizedException(
+open class UnauthorizedException(
     message: String,
 ) : KatchupException(
     HttpStatus.UNAUTHORIZED,
