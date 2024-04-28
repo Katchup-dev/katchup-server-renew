@@ -62,6 +62,10 @@ dependencies {
 
     val kotestSpringExtensionVersion = "1.1.3"
     testImplementation("io.kotest.extensions:kotest-extensions-spring:$kotestSpringExtensionVersion")
+
+    // mockk
+    val mockkVersion = "1.12.0"
+    testImplementation("io.mockk:mockk:$mockkVersion")
 }
 
 tasks.withType<KotlinCompile> {
