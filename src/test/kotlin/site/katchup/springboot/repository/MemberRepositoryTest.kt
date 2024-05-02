@@ -16,9 +16,11 @@ class MemberRepositoryTest(
             name = "name",
             nickname = "nickname",
             socialId = "socialId",
+            email = "unan@katchup.site",
             socialType = SocialType.GOOGLE,
-            lineMemo = "lineMemo",
+            profileMemo = "lineMemo",
             workSpaceId = 1,
+            profileImage = "https://katchup.site/image/1",
         )
         val savedMember = memberRepository.save(member)
         val findMember = memberRepository.findById(savedMember.id!!).get()
@@ -27,7 +29,7 @@ class MemberRepositoryTest(
         findMember.nickname shouldBe "nickname"
         findMember.socialId shouldBe "socialId"
         findMember.socialType shouldBe SocialType.GOOGLE
-        findMember.lineMemo shouldBe "lineMemo"
+        findMember.profileMemo shouldBe "lineMemo"
         findMember.workSpaceId shouldBe 1
     }
 },)
