@@ -13,10 +13,12 @@ class Member(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     val name: String,
-    val nickname: String,
     val socialId: String,
+    val nickname: String,
+    val email: String,
     @Enumerated(STRING)
     val socialType: SocialType,
-    val lineMemo: String,
+    val profileMemo: String?,
     val workSpaceId: Long,
+    val profileImage: String?,
 )
