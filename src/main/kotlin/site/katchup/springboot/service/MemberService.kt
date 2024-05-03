@@ -3,15 +3,14 @@ package site.katchup.springboot.service
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import site.katchup.springboot.dto.member.response.MemberResponse
-import site.katchup.springboot.repository.MemberRepository
 
 @Service
 @Transactional(readOnly = true)
 class MemberService(
-    private val memberRepository: MemberRepository,
+    private val memberFinder: MemberFinder,
 ) {
     fun getMemberById(id: Long): MemberResponse {
-        val member = memberRepository.findByIdOrThrow(id)
+        val member = memberFinder.findByIdOrThrow(id)
         return MemberResponse(
             memberId = member.id!!,
             nickname = member.nickname,

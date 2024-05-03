@@ -18,6 +18,10 @@ class BaseResponse<T>(
             return ResponseEntity.ok(BaseResponse(message.value, data))
         }
 
+        fun <T> ok(message: SuccessMessage): ResponseEntity<BaseResponse<T>> {
+            return ResponseEntity.ok(BaseResponse(message.value, null))
+        }
+
         fun <T> created(message: SuccessMessage, data: T): ResponseEntity<BaseResponse<T>> {
             return ResponseEntity.status(HttpStatus.CREATED).body(BaseResponse(message.value, data))
         }
