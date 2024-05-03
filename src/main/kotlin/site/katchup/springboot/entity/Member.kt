@@ -14,11 +14,11 @@ class Member(
     val id: Long? = null,
     val name: String,
     val socialId: String,
-    val nickname: String,
+    var nickname: String,
     val email: String,
     @Enumerated(STRING)
     val socialType: SocialType,
-    val profileMemo: String?,
+    var profileMemo: String?,
     val workSpaceId: Long,
     val profileImage: String?,
 )
