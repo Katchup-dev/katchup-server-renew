@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import site.katchup.springboot.dto.notification.response.NotificationListResponse
 import site.katchup.springboot.dto.notification.response.NotificationResponse
-import site.katchup.springboot.service.NotificationService
+import site.katchup.springboot.service.notification.NotificationService
 import java.time.LocalDateTime
 
 @WebMvcTest

@@ -14,8 +14,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import site.katchup.springboot.dto.member.request.MemberUpdateRequest
 import site.katchup.springboot.dto.member.response.MemberResponse
 import site.katchup.springboot.global.util.JsonUtil
-import site.katchup.springboot.service.MemberProfileService
-import site.katchup.springboot.service.MemberService
+import site.katchup.springboot.service.member.MemberProfileService
+import site.katchup.springboot.service.member.MemberService
 
 @WebMvcTest
 class MemberControllerTest() : FunSpec() {
