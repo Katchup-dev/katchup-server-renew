@@ -9,6 +9,7 @@ enum class SuccessMessage(
     SUCCESS_GET_NOTIFICATIONS("알림 목록 조회 성공"),
     SUCCESS_ADD_NOTIFICATION("알림 추가 성공"),
     SUCCESS_ADD_TASK("할일 추가 성공"),
+    SUCCESS_UPDATE_TASK("할일 수정 성공"),
 
     ;
 }

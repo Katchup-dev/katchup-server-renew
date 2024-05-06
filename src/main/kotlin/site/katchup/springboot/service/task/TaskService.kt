@@ -3,6 +3,7 @@ package site.katchup.springboot.service.task
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import site.katchup.springboot.dto.task.request.TaskRequest
+import site.katchup.springboot.dto.task.request.TaskUpdateRequest
 import site.katchup.springboot.entity.Task
 import site.katchup.springboot.entity.TaskStatus
 import site.katchup.springboot.repository.TaskRepository
@@ -13,6 +14,7 @@ import site.katchup.springboot.service.memberworkspace.MemberWorkSpaceFinder
 class TaskService(
     private val taskRepository: TaskRepository,
     private val memberWorkSpaceFinder: MemberWorkSpaceFinder,
+    private val taskFinder: TaskFinder,
 ) {
 
     @Transactional
@@ -25,5 +27,12 @@ class TaskService(
             memberWorkSpaceId = memberWorkSpace.id!!,
         )
         taskRepository.save(task)
+    }
+
+    @Transactional
+    fun updateTask(memberId: Long, taskId: Long, request: TaskUpdateRequest) {
+        val task = taskFinder.findTaskOrThrow(taskId)
+        task.title = request.title
+        task.content = request.content
     }
 }

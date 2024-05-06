@@ -4,6 +4,14 @@ enum class FailMessage(
     val value: String,
 ) {
     /*
+        * 400 BAD REQUEST
+    */
+
+    INVALID_PARAMETER("잘못된 요청 파라미터"),
+    INVALID_TASK_TITLE("유효하지 않은 업무 제목"),
+    INVALID_TASK_CONTENT("유효하지 않은 업무 내용"),
+
+    /*
         * 401 UNAUTHORIZED
      */
     INVALID_TOKEN("유효하지 않은 토큰"),
