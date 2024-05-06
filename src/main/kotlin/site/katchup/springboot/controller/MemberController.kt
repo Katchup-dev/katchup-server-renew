@@ -9,8 +9,8 @@ import site.katchup.springboot.dto.member.request.MemberUpdateRequest
 import site.katchup.springboot.dto.member.response.MemberResponse
 import site.katchup.springboot.global.message.SuccessMessage
 import site.katchup.springboot.global.response.BaseResponse
-import site.katchup.springboot.service.MemberProfileService
-import site.katchup.springboot.service.MemberService
+import site.katchup.springboot.service.member.MemberProfileService
+import site.katchup.springboot.service.member.MemberService
 
 @ApiControllerV1
 class MemberController(

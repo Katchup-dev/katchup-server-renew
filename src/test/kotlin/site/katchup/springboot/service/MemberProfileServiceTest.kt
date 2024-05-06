@@ -8,6 +8,7 @@ import io.mockk.mockk
 import site.katchup.springboot.dto.member.request.MemberUpdateRequest
 import site.katchup.springboot.entity.Member
 import site.katchup.springboot.entity.SocialType
+import site.katchup.springboot.service.member.MemberProfileService
 
 class MemberProfileServiceTest : FunSpec() {
 

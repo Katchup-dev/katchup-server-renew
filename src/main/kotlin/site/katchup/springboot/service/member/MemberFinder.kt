@@ -1,4 +1,4 @@
-package site.katchup.springboot.service
+package site.katchup.springboot.service.member
 
 import org.springframework.stereotype.Component
 import site.katchup.springboot.entity.Member
