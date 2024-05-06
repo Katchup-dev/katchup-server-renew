@@ -27,7 +27,7 @@ class MemberController(
     fun updateMember(
         @PathVariable memberId: Long,
         @RequestBody memberUpdateRequest: MemberUpdateRequest,
-    ): ResponseEntity<BaseResponse<MemberResponse>> {
+    ): ResponseEntity<BaseResponse<Unit>> {
         memberProfileService.update(memberId, memberUpdateRequest)
         return BaseResponse.ok(SuccessMessage.SUCCESS_UPDATE_MEMBER)
     }
