@@ -26,6 +26,10 @@ class BaseResponse<T>(
             return ResponseEntity.status(HttpStatus.CREATED).body(BaseResponse(message.value, data))
         }
 
+        fun <T> created(message: SuccessMessage): ResponseEntity<BaseResponse<T>> {
+            return ResponseEntity.status(HttpStatus.CREATED).body(BaseResponse(message.value, null))
+        }
+
         fun fail(status: HttpStatus, message: FailMessage): ResponseEntity<BaseResponse<Unit>> {
             return ResponseEntity.status(status).body(BaseResponse(message.value))
         }

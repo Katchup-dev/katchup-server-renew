@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import site.katchup.springboot.dto.task.request.TaskRequest
 import site.katchup.springboot.dto.task.request.TaskUpdateRequest
+import site.katchup.springboot.dto.task.response.TaskResponse
 import site.katchup.springboot.entity.Task
 import site.katchup.springboot.entity.TaskStatus
 import site.katchup.springboot.repository.TaskRepository
@@ -34,5 +35,10 @@ class TaskService(
         val task = taskFinder.findTaskOrThrow(taskId)
         task.title = request.title
         task.content = request.content
+    }
+
+    fun getTask(memberId: Long, taskId: Long): TaskResponse {
+        val task = taskFinder.findTaskOrThrow(taskId)
+        return TaskResponse.of(task)
     }
 }
