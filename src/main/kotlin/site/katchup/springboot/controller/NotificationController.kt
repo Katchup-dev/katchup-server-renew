@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
+import site.katchup.springboot.auth.Auth
 import site.katchup.springboot.dto.notification.request.NotificationRequest
 import site.katchup.springboot.dto.notification.response.NotificationListResponse
 import site.katchup.springboot.dto.notification.response.NotificationResponse
@@ -17,12 +18,12 @@ class NotificationController(
 ) {
 
     @GetMapping("/notifications")
-    fun getNotifications(memberId: Long): ResponseEntity<BaseResponse<NotificationListResponse>> {
+    fun getNotifications(@Auth memberId: Long): ResponseEntity<BaseResponse<NotificationListResponse>> {
         return BaseResponse.ok(SuccessMessage.SUCCESS_GET_NOTIFICATIONS, notificationService.getNotifications(memberId))
     }
 
     @PostMapping("/notifications")
-    fun addNotification(memberId: Long, @RequestBody request: NotificationRequest): ResponseEntity<BaseResponse<NotificationResponse>> {
+    fun addNotification(@Auth memberId: Long, @RequestBody request: NotificationRequest): ResponseEntity<BaseResponse<NotificationResponse>> {
         notificationService.addNotification(memberId, request)
         return BaseResponse.ok(SuccessMessage.SUCCESS_ADD_NOTIFICATION)
     }

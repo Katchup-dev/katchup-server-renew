@@ -41,7 +41,8 @@ class MemberControllerTest() : FunSpec() {
             )
             mockMvc.perform(
                 get("/api/v1/members")
-                    .param("memberId", "1"),
+                    .param("memberId", "1")
+                    .header("Authorization", "Bearer eyasdasdas"),
             )
                 .andExpect(status().isOk)
                 .andExpect(jsonPath("$.message").value("사용자 정보 조회 성공"))
@@ -52,7 +53,7 @@ class MemberControllerTest() : FunSpec() {
                 .andExpect(jsonPath("$.data.profileImage").value("https://katchup.site/image/1"))
         }
 
-        test("[PATCH /api/v1/members/{memberId}] 사용자 프로필 업데이트 API Test") {
+        test("[PATCH /api/v1/members] 사용자 프로필 업데이트 API Test") {
             every {
                 memberProfileService.update(any(), any())
             } just runs
@@ -65,7 +66,8 @@ class MemberControllerTest() : FunSpec() {
             val JSONBody = JsonUtil.getJSONStringBody(memberUpdateRequest)
 
             mockMvc.perform(
-                patch("/api/v1/members/{memberId}", 1)
+                patch("/api/v1/members")
+                    .param("memberId", "1")
                     .content(JSONBody)
                     .contentType("application/json"),
             )
