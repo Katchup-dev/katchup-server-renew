@@ -21,4 +21,6 @@ class Member(
     var profileMemo: String?,
     val workSpaceId: Long,
     val profileImage: String?,
+    var isRegularAlarmConsentGranted: Boolean = false,
+    var isPartnerAlarmConsentGranted: Boolean = false,
 )
