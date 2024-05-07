@@ -11,6 +11,7 @@ enum class SuccessMessage(
     SUCCESS_ADD_TASK("업무 추가 성공"),
     SUCCESS_UPDATE_TASK("업무 수정 성공"),
     SUCCESS_GET_TASK("업무 조회 성공"),
+    SUCCESS_UPDATE_ALARM_CONSENT("알림 수신 동의 변경 성공"),
 
     ;
 }
