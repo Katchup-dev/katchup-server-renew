@@ -14,15 +14,17 @@ class TokenValidator(
     @Value("\${katchup.jwt.secret-key}") private val secretKey: String,
 ) {
 
+    private val algorithm = Algorithm.HMAC256(secretKey)
+
     companion object {
         private const val MEMBER_ID = "memberId"
+        private const val TOKEN_ISSUER = "katchup"
     }
 
     fun validate(token: String): Long {
         try {
-            val algorithm = Algorithm.HMAC256(secretKey)
             val verifier: JWTVerifier = require(algorithm)
-                .withIssuer("katchup")
+                .withIssuer(TOKEN_ISSUER)
                 .withClaimPresence(MEMBER_ID)
                 .build()
             val decodedJWT = verifier.verify(parse(token))
