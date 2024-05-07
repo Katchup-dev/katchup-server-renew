@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
+import site.katchup.springboot.auth.Auth
 import site.katchup.springboot.dto.task.request.TaskRequest
 import site.katchup.springboot.dto.task.request.TaskUpdateRequest
 import site.katchup.springboot.dto.task.response.TaskResponse
@@ -20,7 +21,7 @@ class TaskController(
 
     @PostMapping("/tasks")
     fun addTask(
-        memberId: Long,
+        @Auth memberId: Long,
         @RequestBody request: TaskRequest,
     ): ResponseEntity<BaseResponse<Unit>> {
         taskService.addTask(memberId, request)
@@ -29,7 +30,7 @@ class TaskController(
 
     @PatchMapping("/tasks/{taskId}")
     fun updateTask(
-        memberId: Long,
+        @Auth memberId: Long,
         @RequestBody request: TaskUpdateRequest,
         @PathVariable taskId: Long,
     ): ResponseEntity<BaseResponse<Unit>> {
@@ -39,7 +40,7 @@ class TaskController(
 
     @GetMapping("/tasks/{taskId}")
     fun getTask(
-        memberId: Long,
+        @Auth memberId: Long,
         @PathVariable taskId: Long,
     ): ResponseEntity<BaseResponse<TaskResponse>> {
         val response = taskService.getTask(memberId, taskId)
