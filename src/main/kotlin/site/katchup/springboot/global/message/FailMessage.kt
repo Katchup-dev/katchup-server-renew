@@ -27,5 +27,6 @@ enum class FailMessage(
         * 500 INTERNAL_SERVER_ERROR
     */
     INTERNAL_SERVER_ERROR("서버 내부 오류"),
+    FCM_SEND_ERROR("FCM 전송 오류"),
     ;
 }

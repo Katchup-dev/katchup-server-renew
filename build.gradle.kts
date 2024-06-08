@@ -66,6 +66,9 @@ dependencies {
     // mockk
     val mockkVersion = "1.13.10"
     testImplementation("io.mockk:mockk:$mockkVersion")
+
+    // fcm
+    implementation("com.google.firebase:firebase-admin:9.3.0")
 }
 
 tasks.withType<KotlinCompile> {
