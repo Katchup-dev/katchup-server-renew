@@ -6,7 +6,9 @@ import site.katchup.springboot.dto.notification.request.NotificationRequest
 import site.katchup.springboot.dto.notification.response.NotificationListResponse
 import site.katchup.springboot.dto.notification.response.NotificationResponse
 import site.katchup.springboot.entity.Notification
+import site.katchup.springboot.external.fcm.FcmRequest
 import site.katchup.springboot.external.fcm.FcmSender
+import site.katchup.springboot.repository.FcmTokenRepository
 import site.katchup.springboot.repository.NotificationRepository
 
 @Service
@@ -14,6 +16,7 @@ import site.katchup.springboot.repository.NotificationRepository
 class NotificationService(
     private val notificationFinder: NotificationFinder,
     private val notificationRepository: NotificationRepository,
+    private val fcmTokenRepository: FcmTokenRepository,
     private val fcmSender: FcmSender,
 ) {
 
@@ -29,7 +32,16 @@ class NotificationService(
     @Transactional
     fun addNotification(memberId: Long, request: NotificationRequest) {
         if (request.isPush) {
-            fcmSender.send()
+            fcmTokenRepository.findAllByMemberId(memberId)
+                .map {
+                    fcmSender.sendMessage(
+                        FcmRequest(
+                            targetToken = it.token,
+                            title = request.title,
+                            content = request.content,
+                        ),
+                    )
+                }
         }
         notificationRepository.save(
             Notification(
