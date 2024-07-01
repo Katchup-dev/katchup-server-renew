@@ -64,7 +64,7 @@ dependencies {
     testImplementation("io.kotest.extensions:kotest-extensions-spring:$kotestSpringExtensionVersion")
 
     // mockk
-    val mockkVersion = "1.13.10"
+    val mockkVersion = "1.13.11"
     testImplementation("io.mockk:mockk:$mockkVersion")
 
     // fcm
